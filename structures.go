@@ -1,5 +1,5 @@
 
-type Lead struct {
+type LeadCRM struct {
 	Result []struct {
 		ID                  string      `json:"ID"`
 		Title               string      `json:"TITLE"`
@@ -50,6 +50,29 @@ type Lead struct {
 		UtmCampaign         interface{} `json:"UTM_CAMPAIGN"`
 		UtmContent          interface{} `json:"UTM_CONTENT"`
 		UtmTerm             interface{} `json:"UTM_TERM"`
+	} `json:"result"`
+	Next  int `json:"next"`
+	Total int `json:"total"`
+	Time  struct {
+		Start            float64   `json:"start"`
+		Finish           float64   `json:"finish"`
+		Duration         float64   `json:"duration"`
+		Processing       float64   `json:"processing"`
+		DateStart        time.Time `json:"date_start"`
+		DateFinish       time.Time `json:"date_finish"`
+		OperatingResetAt int       `json:"operating_reset_at"`
+		Operating        int       `json:"operating"`
+	} `json:"time"`
+}
+type PhoneCRM struct {
+	Result []struct {
+		ID    string `json:"ID"`
+		Phone []struct {
+			ID        string `json:"ID"`
+			ValueType string `json:"VALUE_TYPE"`
+			Value     string `json:"VALUE"`
+			TypeID    string `json:"TYPE_ID"`
+		} `json:"PHONE,omitempty"`
 	} `json:"result"`
 	Next  int `json:"next"`
 	Total int `json:"total"`
