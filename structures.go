@@ -1,4 +1,3 @@
-
 type LeadCRM struct {
 	Result []struct {
 		ID                  string      `json:"ID"`
